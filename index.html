@@ -11,24 +11,52 @@
     	
     	<script src="js/app.js"></script>
     	<script src="js/controller/CalculatorController.js"></script>
+    	<script src="js/controller/DisplayController.js"></script>
+    	<script src="js/controller/NumberKeysController.js"></script>
+    	<script src="js/controller/OperatorKeysController.js"></script>
+
+    	<script src="js/view/calculatorView.js"></script>
+    	<script src="js/view/DisplayView.js"></script>
+    	<script src="js/view/OperatorKeysView.js"></script>
+    	<script src="js/view/NumberKeysView.js"></script>
+    	
+    	<script src="js/app.js"></script>
+    	<script src="js/route.js"></script>
+
+    	<!--<script src="js/controller/CalculatorController.js"></script>
+    	<script src="js/controller/CalculatorController.js"></script>
+    	<script src="js/controller/CalculatorController.js"></script>
+    	<script src="js/controller/CalculatorController.js"></script>-->
 
 	</head>
 	<body>
-		<script type = "text/x-handlebars" data-template-name = "application">
-			<h3>Calculator 
-				<span>{{version}}</span>
-			</h3>
-			<hr>
-			{{input value = expression}}
-			<br>expression : {{expression}}
-			<br>expression Str : {{expStr}}
-			<ul>
-				{{#each k in keys}}
-				 <input type="button" {{bind-attr value = 'k' class='version:btn'}} {{action 'clicked' k}}>
-				{{/each}} 
-				<input type = "button" {{action 'evaluate'}} value = '='>
-			</ul>
+		
+		<script type = "text/x-handlebars" data-template-name ="display">
+			<input type = "text" class = "display" {{bind-attr value=view.value}} disabled="true">
 		</script>
-
+		<script type = "text/x-handlebars" data-template-name = "numberKeys">
+			<section>
+			{{#each k in view.keys}}
+				<input type="button" class="keys" {{action 'click' k target="view"}} {{bind-attr value = k}}>
+			{{/each}}
+			</section>
+		</script>
+		<script type = "text/x-handlebars" data-template-name = "operatorKeys">
+			{{#each k in view.keys}}
+				<input type="button" class="keys sep" {{action 'click' k target ="view"}} {{bind-attr value = k}}>
+			{{/each}}
+		</script>
+		<script type = "text/x-handlebars" data-template-name="calculator">
+			<div class="wrapper">
+				{{view 'display'}}
+				<section class="keys-wrapper">
+					{{view 'numberKeys'}}
+					{{view 'operatorKeys'}}
+				</section>
+			</div>
+		</script>
+		<script type = "text/x-handlebars" data-template-name="application">
+			{{view 'calculator'}}
+		</script>
 	</body>
 </html>
