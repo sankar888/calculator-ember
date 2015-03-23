@@ -1,10 +1,11 @@
 App.NumberKeysController = Ember.ObjectController.extend({
 	
+	needs : ['calculator'],
+	calculator : Ember.computed.alias('controllers.calculator'),
+	keys : ['0','1','2','3','4','5','6','7','8','9','.'],
 	actions : {
-		numberKeyedIn : function(key){
-			console.log("coming to controller" + key);
-			console.log(this.get('target'));
-			//this.get('target').send('numberKeyedIn', key);
+		click : function(key){
+			this.get('calculator').send('numberKeyedIn',key);
 		}
 	}
 });

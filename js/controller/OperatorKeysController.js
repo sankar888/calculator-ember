@@ -1,20 +1,22 @@
 App.OperatorKeysController = Ember.ObjectController.extend({
 	
+	needs : ['calculator'],
+	calculator : Ember.computed.alias('controllers.calculator'),
+	keys : ['+','-','*','/','^','(',')','C','='],
 	actions : {
+		click : function(key){
+			
+			switch (key){
 
-		del : function(){
-			console.log('inside del');
-			//this.get('target').send('del');
-		},
+				case '=' : 	this.get('calculator').send('submitKeyedIn');
+						 	break;
+						 	
+				case 'C' : 	this.get('calculator').send('deleteKeyedIn');
+							break;
 
-		calculate : function(){
-			console.log('calculate');
-			//this.get('target').send('calculate');
-		},
-
-		operatorKeyedIn : function(key){
-			console.log("operator keyed in");
-			//this.get('target').send('operatorKeyedIn',key);
+				default :   this.get('calculator').send('operatorKeyedIn',key);
+							break;
+			}
 		}
 	}
 });
