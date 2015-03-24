@@ -16,13 +16,13 @@ section {
 }
 
 .wrapper{
-	max-width: 600px;
-	max-height: 500px;
+	width : 300px;
+	height : 350px;
 	height : 100%;
 	margin : 0 auto;
 	text-align : center;
 	border : lightgrey 1px solid;
-	padding :4% 2% 2% 2%;
+	padding :25px 10px 10px 10px;
 }
 
 .display{
@@ -40,11 +40,10 @@ section {
 
 .wrapper input[type = 'button']{
 
-	float : left;
 	width : 23%; 
 	height : auto;
 	box-sizing : border-box; 
-	padding: 3% 0px;
+	padding: 4% 0px;
 	margin: 1%;
 	background-color: #f8f8f8; 
 	border: #BBDEFB 1px solid;
@@ -52,6 +51,7 @@ section {
 	color: #1565C0;
 	font-size: 18px;
 	cursor : pointer;
+	position : absolute;
 }
 
 .wrapper input[type = 'button']:hover{
@@ -61,4 +61,50 @@ section {
 	clear : both;
 	visibility : hidden;
 	display : block;
+}
+
+.keys-wrapper{
+	position : relative;
+	height : 280px;
+	margin-top:10px;
+}
+
+input[value = '('], input[value = ')'], input[value = '^'], input[value = 'C']{
+	top : 0;
+}
+
+
+input[value = '7'], input[value = '8'], input[value = '9'], input[value = '/']{
+	top : 20%;
+}
+
+
+input[value = '4'], input[value = '5'], input[value = '6'], input[value = '*']{
+	top : 40%;
+}
+
+
+input[value = '1'], input[value = '2'], input[value = '3'], input[value = '-']{
+	top : 60%;
+}
+
+input[value = '0'], input[value = '.'], input[value = '='], input[value = '+']{
+	top : 80%;
+}
+
+/* styles for left align*/
+input[value = '('], input[value = '7'], input[value = '4'], input[value = '1'], input[value = '0']{
+	left : 0%;
+}
+
+input[value = ')'], input[value = '8'], input[value = '5'], input[value = '2'], input[value = '.']{
+	left : 25%;
+}
+
+input[value = '^'], input[value = '9'], input[value = '6'], input[value = '3'], input[value = '=']{
+	left : 50%;
+}
+
+input[value = 'C'], input[value = '/'], input[value = '*'], input[value = '-'], input[value = '+']{
+	left : 75%;
 }

@@ -15,35 +15,25 @@
     	<script src="js/controller/NumberKeysController.js"></script>
     	<script src="js/controller/OperatorKeysController.js"></script>
 
-    	<script src="js/model/CalculatorModel.js"></script>
-
-    	<!--<script src="js/view/DisplayView.js"></script>
-    	<script src="js/view/OperatorKeysView.js"></script>
-    	<script src="js/view/NumberKeysView.js"></script>
-    	<script src="js/view/calculatorView.js"></script>-->
-    	
-
-    	<!--<script src="js/controller/CalculatorController.js"></script>
-    	<script src="js/controller/CalculatorController.js"></script>
-    	<script src="js/controller/CalculatorController.js"></script>
-    	<script src="js/controller/CalculatorController.js"></script>-->
+    	<script src="js/view/NumberkeysView.js"></script>
+    	<script src="js/view/OperatorkeysView.js"></script>
+    	<script src="js/view/DisplayView.js"></script>
+    	<script src="js/view/CalculatorView.js"></script>
 
 	</head>
 	<body>
 		
 		<script type = "text/x-handlebars" data-template-name ="display">
-			<input type = "text" class = "display" {{bind-attr value=value}} disabled="true">
+			<input type = "text" class = "display" {{bind-attr value=view.value}} disabled="true">
 		</script>
 		<script type = "text/x-handlebars" data-template-name = "numberKeys">
-			<section>
-			{{#each k in keys}}
-				<input type="button" class="keys" {{action 'click' k}} {{bind-attr value = k}}>
+			{{#each k in view.keys}}
+				<input type="button" class="keys" {{bind-attr value = k}}>
 			{{/each}}
-			</section>
 		</script>
 		<script type = "text/x-handlebars" data-template-name = "operatorKeys">
-			{{#each k in keys}}
-				<input type="button" class="keys sep" {{action 'click' k}} {{bind-attr value = k}}>
+			{{#each k in view.keys}}
+				<input type="button" class="keys sep" {{bind-attr value = k}}>
 			{{/each}}
 		</script>
 		<script type = "text/x-handlebars" data-template-name="calculator">
@@ -52,6 +42,7 @@
 				<section class="keys-wrapper">
 					{{render 'numberKeys'}}
 					{{render 'operatorKeys'}}
+					<span class="clear"></span>
 				</section>
 			</div>
 		</script>

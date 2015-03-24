@@ -1,19 +1,22 @@
 App.OperatorKeysView = Ember.View.extend({
-	
-	templateName : 'operatorKeys',
-	keys : ['+','-','*','/','^','(',')','C','='],
-	actions : {
-		click : function(key){
-			console.log("click send to view");
-			if('=' === key){
-				this.get('controller').send('calculate');
-			}
-			else if('C' === key){
-				this.get('controller').send('del');
-			}
-			else{
-				this.get('controller').send('operatorKeyedIn', key);
+		templateName : 'operatorKeys',
+
+		keys : function(){
+			return this.get('controller').get('model.keys');
+		}.property('controller.model.keys'),
+
+		click : function(event){
+			var key = event.target.value;
+			switch (key){
+
+				case '=' : 	this.get('controller').send('submitKeyedIn');
+						 	break;
+						 	
+				case 'C' : 	this.get('controller').send('deleteKeyedIn');
+							break;
+
+				default :   this.get('controller').send('operatorKeyedIn',key);
+							break;
 			}
 		}
-	}
 });

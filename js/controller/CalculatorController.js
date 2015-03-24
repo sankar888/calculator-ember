@@ -22,7 +22,6 @@ App.CalculatorController = Ember.ObjectController.extend({
 	model : {
 		expression : []
 	},
-
 	actions : {
 
 		numberKeyedIn : function(key){
@@ -141,7 +140,7 @@ App.CalculatorController = Ember.ObjectController.extend({
 	},
 
 	push : function(key){
-		this.get('model.expression').push(key);
+		this.get('model').expression.push(key);
 		this.lastToken = key;
 		this.refreshExpected(key);
 		this.get('display').append(key);
